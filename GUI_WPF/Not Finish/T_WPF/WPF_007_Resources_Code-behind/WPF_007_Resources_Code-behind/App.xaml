@@ -1,0 +1,10 @@
+﻿<Application x:Class="WPF_007_Resources_Code_behind.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF_007_Resources_Code_behind"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <sys:String x:Key="strApp">Hello, Application world!</sys:String>
+    </Application.Resources>
+</Application>

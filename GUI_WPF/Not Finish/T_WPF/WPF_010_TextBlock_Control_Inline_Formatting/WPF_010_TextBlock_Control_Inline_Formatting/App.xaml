@@ -1,0 +1,9 @@
+﻿<Application x:Class="WPF_010_TextBlock_Control_Inline_Formatting.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF_010_TextBlock_Control_Inline_Formatting"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

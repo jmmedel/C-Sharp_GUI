@@ -1,0 +1,53 @@
+﻿<Window x:Class="WPF_013_Label_Control.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_013_Label_Control"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!-- 
+    The Label control
+The Label control, in its most simple form, will look very much like the TextBlock which we used in another article. You will quickly notice though that instead of a Text property, the Label has a Content property. The reason for that is that the Label can host any kind of control directly inside of it, instead of just text. This content can be a string as well though, as you will see in this first and very basic example:
+
+
+    -->
+    <StackPanel>
+        <Label Content="This is a Label control." />
+        <!--Another thing you might notice is the fact that the Label, by default, has a bit of padding, allowing the text to be rendered a few pixels away from the top, left corner. This is not the case for the TextBlock control, where you will have to specify it manually.
+
+In a simple case like this, where the content is simply a string, the Label will actually create a TextBlock internally and show your string in that. -->
+        <StackPanel Margin="10">
+            <Label Content="_Name:" Target="{Binding ElementName=txtName}" />
+            <TextBox Name="txtName" />
+            <Label Content="_Mail:" Target="{Binding ElementName=txtMail}" />
+            <TextBox Name="txtMail" />
+        </StackPanel>
+    </StackPanel>
+    <!-- 
+    The Label control vs. the TextBlock control
+So why use a Label at all then? Well, there are a few important differences between the Label and the TextBlock. The TextBlock only allows you to render a text string, while the Label also allows you to:
+
+Specify a border
+Render other controls, e.g. an image
+Use templated content through the ContentTemplate property
+Use access keys to give focus to related controls
+The last bullet point is actually one of the main reasons for using a Label over the TextBlock control. Whenever you just want to render simple text, you should use the TextBlock control, since it's lighter and performs better than the Label in most cases.
+
+Label and Access keys (mnemonics)
+In Windows and other operating systems as well,
+    it's common practice that you can access controls 
+    in a dialog by holding down the [Alt] key and then 
+    pressing a character which corresponds to the control 
+    that you wish to access. The character to press will 
+    be highlighted when you hold down the [Alt] key. TextBlock 
+    controls doesn't support this functionality, but the Label 
+    does, so for control labels, the Label control is usually an
+    excellent choice. Let's look at an example of it in action:
+    The screenshot shows our sample dialog as it looks when the Alt key is pressed. Try running it, holding down the [Alt] key and then pressing N and M. You will see how focus is moved between the two textboxes.
+
+So, there's several new concepts here. First of all, we define the access key by placing an underscore (_) before the character. It doesn't have to be the first character, it can be before any of the characters in your label content. The common practice is to use the first character that's not already used as an access key for another control.
+
+We use the Target property to connect the Label and the designated control. We use a standard WPF binding for this, using the ElementName property, all of which we will describe later on in this tutorial. The binding is based on the name of the control, so if you change this name, you will also have to remember to change the binding.
+    -->
+</Window>

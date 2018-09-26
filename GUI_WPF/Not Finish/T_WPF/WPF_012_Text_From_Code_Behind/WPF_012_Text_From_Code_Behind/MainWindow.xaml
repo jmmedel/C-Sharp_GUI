@@ -1,0 +1,21 @@
+﻿<Window x:Class="WPF_012_Text_From_Code_Behind.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_012_Text_From_Code_Behind"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!-- 
+    Formatting text from C#/Code-Behind
+As you can see, formatting text through XAML is very 
+    easy, but in some cases, you might prefer or even 
+    need to do it from your C#/Code-Behind file. This is 
+    a bit more cumbersome, but here's an example on how you
+    may do it:
+    
+    -->
+    <Grid>
+        
+    </Grid>
+</Window>

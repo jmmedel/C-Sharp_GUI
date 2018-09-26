@@ -1,0 +1,34 @@
+﻿<Window x:Class="WPF_007_Resources_Code_behind.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_007_Resources_Code_behind"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="175" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <sys:String x:Key="strWindow">Hello, Window world!</sys:String>
+    </Window.Resources>
+    <DockPanel Margin="10" Name="pnlMain">
+        <DockPanel.Resources>
+            <sys:String x:Key="strPanel">Hello, Panel world!</sys:String>
+        </DockPanel.Resources>
+
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10">
+            <Button Name="btnClickMe" Click="btnClickMe_Click">Click me!</Button>
+        </WrapPanel>
+
+        <ListBox Name="lbResult" />
+    </DockPanel>
+    <!-- 
+    So, as you can see, we store three different "Hello, world!" messages: One in App.xaml, one inside the window, and one locally for the main panel. The interface consists of a button and a ListBox.
+
+In Code-behind, we handle the click event of the button, in which we add each of the text strings to the ListBox, as seen on the screenshot. We use the FindResource() method, which will return the resource as an object (if found), and then we turn it into the string that we know it is by using the ToString() method.
+
+Notice how we use the FindResource() method on different scopes - first on the panel, then on the window and then on the current Application object. It makes sense to look for the resource where we know it is, but as already mentioned, if a resource is not found, the search progresses up the hierarchy, so in principal, we could have used the FindResource() method on the panel in all three cases, since it would have continued up to the window and later on up to the application level, if not found.
+
+The same is not true the other way around - the search doesn't navigate down the tree, so you can't start looking for a resource on the application level, if it has been defined locally for the control or for the window.
+    -->
+</Window>

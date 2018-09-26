@@ -1,0 +1,61 @@
+﻿<Window 
+        x:Class="WPF_006_Resources_Dynamic_Resource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_006_Resources_Dynamic_Resource"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="160" Width="300"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        >
+    <Window.Resources>
+        <sys:String x:Key="ComboBoxTitle">Items:</sys:String>
+
+        <x:Array x:Key="ComboBoxItems" Type="sys:String">
+            <sys:String>Item #1</sys:String>
+            <sys:String>Item #2</sys:String>
+            <sys:String>Item #3</sys:String>
+        </x:Array>
+
+        <LinearGradientBrush x:Key="WindowBackgroundBrush">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <Label Content="{StaticResource ComboBoxTitle}" />
+        <ComboBox ItemsSource="{StaticResource ComboBoxItems}" />
+    </StackPanel>
+    <!-- 
+    This time, we've added a couple of extra resources, 
+    so that our Window now contains a simple string, an
+    array of strings and a LinearGradientBrush. The string
+    is used for the label, the array of strings is used as 
+    items for the ComboBox control and the gradient brush is
+    used as background for the entire window. So, as you can 
+    see, pretty much anything can be stored as a resource.
+    Local and application wide resources
+For now, we have stored resources on a window-level, which means that you can access them from all over the window.
+
+If you only need a given resource for a specific control, you can make it more local by adding it to this specific control, instead of the window. It works exactly the same way, the only difference being that you can now only access from inside the scope of the control where you put it:
+
+Download sample
+<StackPanel Margin="10">
+    <StackPanel.Resources>
+        <sys:String x:Key="ComboBoxTitle">Items:</sys:String>
+    </StackPanel.Resources>
+    <Label Content="{StaticResource ComboBoxTitle}" />
+</StackPanel>
+In this case, we add the resource to the StackPanel and then use it from its child control, the Label. Other controls inside of the StackPanel could have used it as well, just like children of these child controls would have been able to access it. Controls outside of this particular StackPanel wouldn't have access to it, though.
+
+If you need the ability to access the resource from several windows, this is possible as well. The App.xaml file can contain resources just like the window and any kind of WPF control, and when you store them in App.xaml, they are globally accessible in all of windows and user controls of the project. It works exactly the same way as when storing and using from a Window:
+    
+    Using it is also the same - WPF will automatically go up the scope, from the local control to the window and then to App.xaml, to find a given resource:
+
+<Label Content="{StaticResource ComboBoxTitle}" />
+Resources from Code-behind
+So far, we've accessed all of our resources directly from XAML, using a markup extension. However, you can of course access your resources from Code-behind as well, which can be useful in several situations. In the previous example, we saw how we could store resources in several different places, so in this example, we'll be accessing three different resources from Code-behind, each stored in a different scope:
+    -->
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPF_014_Using_Controls_As_Label_Content.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_014_Using_Controls_As_Label_Content"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="300">
+    <!-- 
+    Using controls as Label content
+    As already mentioned, the Label control allows you to 
+    host other controls, while still keeping the other 
+    benefits. Let's try an example where we have both an
+    image and a piece of text inside the Label, while also 
+    having an access key for each of the labels:
+    
+    -->
+    <StackPanel Margin="10">
+        <Label Target="{Binding ElementName=txtName}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png" />
+                <AccessText Text="_Name:" />
+            </StackPanel>
+        </Label>
+        <TextBox Name="txtName" />
+        <Label Target="{Binding ElementName=txtMail}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_blue.png" />
+                <AccessText Text="_Mail:" />
+            </StackPanel>
+        </Label>
+        <TextBox Name="txtMail" />
+    </StackPanel>
+    <!-- 
+    This is just an extended version of the previous example - instead of a simple text string, our Label will now host both and image and a piece of text (inside the AccessText control, which allows us to still use an access key for the label). Both controls are inside a horizontal StackPanel, since the Label, just like any other ContentControl derivate, can only host one direct child control.
+
+The Image control, described later in this tutorial, uses a remote image - this is ONLY for demonstrational purposes and is NOT a good idea for most real life applications.
+
+Summary
+In most situations, the Label control does exactly what the name implies: It acts as a text label for another control. This is the primary purpose of it. For most other cases, you should probably use a TextBlock control or one of the other text containers that WPF offers.
+    -->
+
+</Window>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPF_010_TextBlock_Control_Inline_Formatting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_010_TextBlock_Control_Inline_Formatting"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!-- 
+    The TextBlock control - Inline formatting
+In the last article we looked at the core functionality of the TextBlock control: Displaying a simple string and wrapping it if necessary. We even used another color than the default for rendering the text, but what if you wanted to do more than just define a static color for all the text in the TextBlock?
+
+Luckily the TextBlock control supports inline content. These small control-like constructs all inherit from the Inline class, which means that they can be rendered inline, as a part of a larger text. As of writing, the supported elements include AnchoredBlock, Bold, Hyperlink, InlineUIContainer, Italic, LineBreak, Run, Span, and Underline. In the following examples, we'll have a look at most of them.
+
+Bold, Italic and Underline
+These are probably the simplest types of inline elements. The names should tell you a lot about what they do, but we'll still give you a quick example on how to use them:
+    -->
+    <StackPanel>
+        <TextBlock Margin="10" TextWrapping="Wrap">
+                        TextBlock with <Bold>bold</Bold>, <Italic>italic</Italic> and <Underline>underlined</Underline> text.
+        </TextBlock>
+        <StackPanel>
+            <TextBlock Margin="10" TextWrapping="Wrap">
+                        This text has a <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.google.com">link</Hyperlink> in it.
+            </TextBlock>
+        </StackPanel>
+        
+    </StackPanel>
+    <!--
+    Much like with HTML, you just surround your text with a Bold tag to get bold text and so on. This makes it very easy to create and display diverse text in your applications.
+
+All three of these tags are just child classes of the Span element, each setting a specific property on the Span element to create the desired effect. For instance, the Bold tag just sets the FontWeight property on the underlying Span element, the Italic element sets the FontStyle and so on.
+
+LineBreak
+Simply inserts a line break into the text. Please see the previous chapter for an example where we use the LineBreak element.
+    Hyperlink
+The Hyperlink element allows you to have links in your text. It's rendered with a style that suits your current Windows theme, which will usually be some sort of underlined blue text with a red hover effect and a hand mouse cursor. You can use the NavigateUri property to define the URL that you wish to navigate to. Here's an example:
+
+The Hyperlink is also used inside of WPF Page's, where it can be used to navigate between pages. In that case, you won't have to specifically handle the RequestNavigate event, like we do in the example, but for launching external URL's from a regular WPF application, we need a bit of help from this event and the Process class. We subscribe to the RequestNavigate event, which allows us to launch the linked URL in the users default browser with a simple event handler like this one in the code behind file:
+    -->
+    
+</Window>

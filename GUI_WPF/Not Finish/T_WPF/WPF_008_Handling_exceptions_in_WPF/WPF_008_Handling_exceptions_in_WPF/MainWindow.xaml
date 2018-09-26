@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPF_008_Handling_exceptions_in_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_008_Handling_exceptions_in_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!-- 
+    Handling exceptions in WPF
+    If you're familiar with C# or any of the other .NET languages that you may use with WPF, then exception handling should not be new to you: Whenever you have a piece of code that are likely to throw an exception, then you should wrap it in a try-catch block to handle the exception gracefully. For instance, consider this example:
+
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+        string s = null;
+        s.Trim();
+}
+Obviously it will go wrong, since I try to perform the Trim() method on a variable that's currently null. If you don't handle the exception, your application will crash and Windows will have to deal with the problem. As you can see, that isn't very user friendly:
+    In this case, the user would be forced to close your application, due to such a simple and easily avoided error. So, if you know that things might go wrong, then you should use a try-catch block, like this:
+    private void Button_Click(object sender, RoutedEventArgs e)
+{
+        string s = null;
+        try
+        {
+                s.Trim();
+        }
+        catch(Exception ex)
+        {
+                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+}
+    However, sometimes even the simplest code can throw 
+    an exception, and instead of wrapping every single line
+    of code with a try- catch block, WPF lets you handle all 
+    unhandled exceptions globally. This is done through the 
+    DispatcherUnhandledException event on the Application class.
+    If subscribed to, WPF will call the subscribing method once 
+    an exception is thrown which is not handled in your own code.
+    Here's a complete example, based on the stuff we just went 
+    through:
+    
+
+
+    -->
+    <Grid>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">
+            Do something bad!
+        </Button>
+    </Grid>
+</Window>
